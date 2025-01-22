@@ -31,7 +31,10 @@ CREATE TABLE `activityhistory` (
   `deadline` date DEFAULT NULL,
   `ActionID` int NOT NULL AUTO_INCREMENT,
   `reminderSent` tinyint(1) DEFAULT '0',
+<<<<<<< HEAD
   `hasReturned` tinyint(1) DEFAULT '0',
+=======
+>>>>>>> parent of 470f083 (Merge branch 'main' into barile)
   PRIMARY KEY (`ActionID`),
   KEY `SubscriberID` (`SubscriberID`),
   CONSTRAINT `activityhistory_ibfk_1` FOREIGN KEY (`SubscriberID`) REFERENCES `subscriber` (`subscriber_id`),
@@ -45,7 +48,11 @@ CREATE TABLE `activityhistory` (
 
 LOCK TABLES `activityhistory` WRITE;
 /*!40000 ALTER TABLE `activityhistory` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `activityhistory` VALUES (1,'To Kill a Mockingbird','Borrow','2024-01-01','autoExtended','2024-05-11',1,0,1),(1,'To Kill a Mockingbird','Return','2024-01-16','1',NULL,2,0,NULL),(3,'Jane Eyre','Borrow','2024-02-02',NULL,NULL,3,0,NULL),(2,'1984','Borrow','2025-01-07','autoExtended','2025-01-28',4,1,0),(2,'The Hobbit','Borrow','2025-01-07','autoExtended','2025-01-15',5,0,NULL),(2,'1984','Borrow','2025-01-10','autoExtended','2025-01-16',6,1,NULL),(5,'1984','Reservation','2025-01-13',NULL,NULL,7,0,NULL),(5,'War and Peace','Reservation','2025-01-13',NULL,NULL,12,1,NULL),(2,'War and Peace','Borrow','2025-01-10',NULL,'2025-01-24',13,0,NULL),(2,'War and Peace','Return','2025-01-13','Returned on time',NULL,14,0,NULL),(5,'War and Peace','Borrow','2025-01-13','autoExtended','2025-01-16',15,1,NULL),(5,'1984','Reservation','2025-01-14',NULL,NULL,16,0,NULL),(5,'War and Peace','Reservation','2025-01-14',NULL,NULL,17,1,NULL),(5,'1984','Reservation','2025-01-14',NULL,NULL,18,0,NULL),(2,'Harry Potter and the Sorcerer\'s Stone','Borrow','2025-01-14','autoExtended','2025-02-04',19,0,NULL),(2,'The Hobbit','Return','2025-01-14','13 Days Late',NULL,21,0,NULL),(2,'War and Peace','Reservation','2025-01-18',NULL,NULL,22,0,NULL),(2,'War and Peace','Reservation','2025-01-18',NULL,NULL,24,0,NULL),(2,'War and Peace','Reservation','2025-01-18',NULL,NULL,25,0,NULL),(1,'1984','Borrow','2025-01-18',NULL,'2025-02-01',26,0,NULL),(1,'War and Peace','Reservation','2025-01-18',NULL,NULL,27,0,NULL),(2,'War and Peace','Borrow','2025-01-18',NULL,'2025-02-01',28,0,NULL),(2,'War and Peace','Return','2025-01-18','Returned on time',NULL,29,0,NULL),(1,'1984','Reservation','2025-01-18',NULL,NULL,30,0,NULL),(1,'1984','Borrow','2025-01-18',NULL,'2025-02-01',31,0,NULL),(1,'1984','Reservation','2025-01-18',NULL,NULL,32,0,NULL);
+=======
+INSERT INTO `activityhistory` VALUES (1,'To Kill a Mockingbird','Borrow','2024-01-01','autoExtended','2024-06-29',1,0),(1,'To Kill a Mockingbird','Return','2024-01-16','1',NULL,2,0),(3,'Jane Eyre','Borrow','2024-02-02',NULL,NULL,3,0),(2,'1984','Borrow','2025-01-07','autoExtended','2025-01-28',4,1),(2,'The Hobbit','Borrow','2025-01-07','autoExtended','2025-01-15',5,0),(2,'1984','Borrow','2025-01-10','autoExtended','2025-01-16',6,1),(5,'1984','Reservation','2025-01-13',NULL,NULL,7,0),(5,'War and Peace','Reservation','2025-01-13',NULL,NULL,12,1),(2,'War and Peace','Borrow','2025-01-10',NULL,'2025-01-24',13,0),(2,'War and Peace','Return','2025-01-13','Returned on time',NULL,14,0),(5,'War and Peace','Borrow','2025-01-13','autoExtended','2025-01-16',15,1),(5,'1984','Reservation','2025-01-14',NULL,NULL,16,0),(5,'War and Peace','Reservation','2025-01-14',NULL,NULL,17,1),(5,'1984','Reservation','2025-01-14',NULL,NULL,18,0),(2,'Harry Potter and the Sorcerer\'s Stone','Borrow','2025-01-14','autoExtended','2025-02-04',19,0),(2,'The Hobbit','Return','2025-01-14','13 Days Late',NULL,21,0),(2,'War and Peace','Reservation','2025-01-18',NULL,NULL,22,0),(2,'War and Peace','Reservation','2025-01-18',NULL,NULL,24,0),(2,'War and Peace','Reservation','2025-01-18',NULL,NULL,25,0),(1,'1984','Borrow','2025-01-18',NULL,'2025-02-01',26,0),(1,'War and Peace','Reservation','2025-01-18',NULL,NULL,27,0),(2,'War and Peace','Borrow','2025-01-18',NULL,'2025-02-01',28,0),(2,'War and Peace','Return','2025-01-18','Returned on time',NULL,29,0),(1,'1984','Reservation','2025-01-18',NULL,NULL,30,0),(1,'1984','Borrow','2025-01-18',NULL,'2025-02-01',31,0),(1,'1984','Reservation','2025-01-18',NULL,NULL,32,0);
+>>>>>>> parent of 470f083 (Merge branch 'main' into barile)
 /*!40000 ALTER TABLE `activityhistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,4 +298,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+<<<<<<< HEAD
 -- Dump completed on 2025-01-21 14:06:16
+=======
+-- Dump completed on 2025-01-19 19:36:57
+>>>>>>> parent of 470f083 (Merge branch 'main' into barile)
