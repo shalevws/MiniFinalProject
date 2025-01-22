@@ -16,11 +16,14 @@ import javafx.stage.Stage;
 import logic.ClientInfo;
 import ocsf.server.*;
 
+<<<<<<< HEAD
 /**
  * The EchoServer class extends AbstractServer to provide server
  * functionalities. It handles client connections, disconnections, and maintains
  * listeners for connection events.
  */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 public class EchoServer extends AbstractServer {
 
 	mysqlConnection SQLinstance;
@@ -29,60 +32,79 @@ public class EchoServer extends AbstractServer {
 	private String subscriberID;
 	private String bookName;
 
+<<<<<<< HEAD
 	/**
 	 * Interface for listening to client connection and disconnection events.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	public interface ConnectionListener {
 		void onClientConnected(ClientInfo c);
 
 		void onClientDisconnected(ClientInfo clientInfo);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Adds a connection listener to monitor connection events.
 	 *
 	 * @param listener the {@link ConnectionListener} to be added.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	public void addConnectionListener(ConnectionListener listener) {
 		listeners.add(listener);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Removes a connection listener.
 	 *
 	 * @param listener the {@link ConnectionListener} to be removed.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	public void removeConnectionListener(ConnectionListener listener) {
 		listeners.remove(listener);
 	}
 
 	final public static int DEFAULT_PORT = 5555;
 
+<<<<<<< HEAD
 	/**
 	 * Constructs an EchoServer instance with the specified port.
 	 *
 	 * @param port the port number for the server to listen on.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	public EchoServer(int port) {
 		super(port);
 		SQLinstance = mysqlConnection.getInstance();
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Called when the server starts successfully and begins listening for
 	 * connections.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	protected void serverStarted() {
 		System.out.println("Server listening for connections on port " + getPort());
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Called when the server stops listening for connections.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	protected void serverStopped() {
 		System.out.println("Server has stopped listening for connections.");
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Handles incoming messages from clients and processes requests based on their
 	 * type.
@@ -92,6 +114,8 @@ public class EchoServer extends AbstractServer {
 	 * @param client the {@link ConnectionToClient} representing the client
 	 *               connection.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	@SuppressWarnings("unchecked")
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 		Subscriber1 sub = null;
@@ -215,6 +239,7 @@ public class EchoServer extends AbstractServer {
 				try {
 					borrowHistory = SQLinstance.getBorrowHistory(subID);
 				} catch (SQLException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				arrToSend.add(8);
@@ -227,7 +252,11 @@ public class EchoServer extends AbstractServer {
 				}
 				break;
 
+<<<<<<< HEAD
 			case 9: // Retrieves the activity history of a subscriber based on their email address.
+=======
+			case 9:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				subEmail = (String) arr.get(3);
 				ArrayList<String> activityHistory = SQLinstance.getActivityHistory(subEmail);
 				arrToSend.add(9);
@@ -239,8 +268,12 @@ public class EchoServer extends AbstractServer {
 				}
 				break;
 
+<<<<<<< HEAD
 			case 10: // Changes the return date of a borrowed book for a subscriber if no conflicts
 						// exist.
+=======
+			case 10:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				// Extract parameters from the array
 				subID = Integer.parseInt((String) arr.get(1));
 				bookName = (String) arr.get(2);
@@ -257,7 +290,11 @@ public class EchoServer extends AbstractServer {
 				}
 				break;
 
+<<<<<<< HEAD
 			case 11: // Retrieves a borrow report for a specific month and year.
+=======
+			case 11:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				ArrayList<String> BorrowRepDet = null;
 				try {
 					BorrowRepDet = SQLinstance.BringBorrowRepInfo((String) arr.get(1), (String) arr.get(2));
@@ -283,7 +320,11 @@ public class EchoServer extends AbstractServer {
 					}
 				}
 				break;
+<<<<<<< HEAD
 			case 12: // Retrieves the names of books borrowed by a specific subscriber.
+=======
+			case 12:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				ArrayList<String> borrowedBooks = SQLinstance.getBorrowedBooks((int) arr.get(1));
 				arrToSend.add(12);
 				arrToSend.add(borrowedBooks);
@@ -294,7 +335,11 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 13: // Adds a new subscriber to the database.
+=======
+			case 13:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				int Sub_id = (int) arr.get(1);
 				String subName = (String) arr.get(2);
 				String subPhone = (String) arr.get(3);
@@ -310,8 +355,13 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 14: // Retrieves the number of available copies of a specific book, Retrieves the
 						// nearest return date for a borrowed book.
+=======
+			case 14:
+
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				bookName = (String) arr.get(1);
 				Integer BookIsInTheInvatory = SQLinstance.getBookAvailability(bookName);
 				String deadlineDate = SQLinstance.getNearestReturnDate(bookName);
@@ -324,8 +374,13 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 15: // Checks if a subscriber exists in the database by their ID, Retrieves the
 						// subscription status of a specific subscriber.
+=======
+			case 15:
+
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				Sub_id = (int) arr.get(1);
 				Boolean subExist = SQLinstance.isSubscriberExist(Sub_id);
 				String statusSub = SQLinstance.getSubscriptionStatus(Sub_id);
@@ -338,7 +393,11 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 16:// Decrements the availability of a specific book in the database by one.
+=======
+			case 16:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				bookName = (String) arr.get(1);
 				Boolean decreaseBook = SQLinstance.decrementBookAvailability(bookName);
 				arrToSend.add(16);
@@ -349,7 +408,11 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 17: // Records a borrowing activity in the activityhistory table.
+=======
+			case 17:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				Sub_id = (int) arr.get(1);
 				bookName = (String) arr.get(2);
 				SQLinstance.addActivityToHistory(Sub_id, bookName);
@@ -361,7 +424,11 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 18: // Retrieves the names of all books from the database.
+=======
+			case 18:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				ArrayList<String> AllBooks = SQLinstance.getAllBookNames();
 				arrToSend.add(18);
 				arrToSend.add(AllBooks);
@@ -372,7 +439,12 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 19: // Retrieves a status report of subscribers for a given month and year.
+=======
+
+			case 19:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				ArrayList<String> statusRepDet = null;
 				try {
 					statusRepDet = SQLinstance.BringStatusRepInfo((String) arr.get(1), (String) arr.get(2));
@@ -510,7 +582,11 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 23: // Retrieves the name of a book based on its barcode ID.
+=======
+			case 23:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				String bookNameBarCode;
 				try {
 					bookNameBarCode = SQLinstance.BringBarCodeBookName((int) arr.get(1));
@@ -526,7 +602,11 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 24: // Checks whether a subscriber can extend the borrow period for a specific book.
+=======
+			case 24:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				String canExtend = SQLinstance.canExtend((int) arr.get(1), (String) arr.get(2));
 				arrToSend.add(24);
 				arrToSend.add(canExtend);
@@ -536,8 +616,14 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 25: // Retrieves books from the database that match a specified search criteria.
+=======
+
+			case 25:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				try {
+
 					String message = (String) arr.get(1);
 					String[] parts = message.split(" ", 3);
 					if (parts.length < 3) {
@@ -562,6 +648,14 @@ public class EchoServer extends AbstractServer {
 				this.bookName = (String) arr.get(2);
 				arrToSend.add(26);
 				try {
+<<<<<<< HEAD
+=======
+					/*
+					 * the return Boolean of the method call in the database represents: True: if
+					 * the book was already returned by subscriber False: the book still didn't
+					 * return.
+					 */
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 					ret = SQLinstance.checkBookAlreadyReturned(this.subscriberID, this.bookName);
 					arrToSend.add(ret);
 					client.sendToClient(arrToSend);
@@ -601,7 +695,11 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 30: // Retrieves all messages for librarians from the database.
+=======
+			case 30:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				ArrayList<String> libMessages = SQLinstance.librarianMessages();
 				arrToSend.add(30);
 				arrToSend.add(libMessages);
@@ -611,8 +709,12 @@ public class EchoServer extends AbstractServer {
 					e.printStackTrace();
 				}
 				break;
+<<<<<<< HEAD
 			case 31: // Retrieves a list of books borrowed by a subscriber that are near their return
 						// deadline.
+=======
+			case 31:
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 				ArrayList<String> booksNearDeadline = SQLinstance
 						.getBooksNearDeadlineForSubscriber(Integer.parseInt((String) arr.get(1)));
 				arrToSend.add(31);
@@ -664,6 +766,7 @@ public class EchoServer extends AbstractServer {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Handles the event when a new client connects to the server. Logs the client's
 	 * IP address and hostname, and notifies all registered listeners about the
@@ -672,6 +775,8 @@ public class EchoServer extends AbstractServer {
 	 * @param client the {@link ConnectionToClient} object representing the
 	 *               connected client.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	@Override
 	protected void clientConnected(ConnectionToClient client) {
 		// Log the client's IP address when they connect
@@ -685,6 +790,7 @@ public class EchoServer extends AbstractServer {
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Handles the event when a client disconnects from the server. Retrieves the
 	 * client's IP and hostname and notifies all registered listeners about the
@@ -693,6 +799,8 @@ public class EchoServer extends AbstractServer {
 	 * @param client the {@link ConnectionToClient} object representing the
 	 *               disconnected client.
 	 */
+=======
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	@Override
 	protected void clientDisconnected(ConnectionToClient client) {
 		try {
@@ -710,14 +818,22 @@ public class EchoServer extends AbstractServer {
 		}
 	}
 
-	/**
-	 * Performs time-sensitive actions when the server starts.
-	 */
+	// this method check all the actions that use time, it is called when the server
+	// starts
 	public void time() {
+<<<<<<< HEAD
 		SQLinstance.timeDidntTakeOrder(); // go to DB and update subscribers that it has been 2 days since their order
 											// arrived
 		SQLinstance.unfreezeAfterMonthStatus(); // unfreeze subscribers after being frozen for a month
 		SQLinstance.notifyBeforeReturnDeadline(); // Sends reminders to subscribers whose book return deadlines are the
 													// next day.
+=======
+		// go to DB and update subscribers that it has been 2 days since their order
+		// arrived
+		// also, delete the tuples in 'orders' table
+		SQLinstance.timeDidntTakeOrder();
+		SQLinstance.unfreezeAfterMonthStatus();
+		SQLinstance.notifyBeforeReturnDeadline();
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 	}
 }

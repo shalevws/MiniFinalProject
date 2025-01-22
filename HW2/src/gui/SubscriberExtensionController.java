@@ -17,10 +17,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-/**
- * Controller class for managing book return extensions for subscribers.
- * Allows subscribers to extend the return date of borrowed books, provided specific conditions are met.
- */
 public class SubscriberExtensionController {
 	
 	 @FXML
@@ -31,10 +27,6 @@ public class SubscriberExtensionController {
 	 
 	 private String selectedBook;
 	 
-	 /**
-     * Initializes the controller by fetching the list of borrowed books for the subscriber
-     * and setting up event handlers.
-     */
 	 @FXML
     public void initialize() {
 		 ClientGUIConnectionController.chat.acceptFromController(12, ChatClient.sub1.getSubscriber_id(), "");
@@ -48,12 +40,6 @@ public class SubscriberExtensionController {
         booksListView.setOnMouseClicked(event -> handleDoubleClick(event));
      }
 	 
-	 /**
-     * Handles double-click events on the list of borrowed books.
-     * Updates the label with the selected book's name.
-     *
-     * @param event the mouse event triggered by double-clicking on a book in the ListView.
-     */
 	 private void handleDoubleClick(MouseEvent event) {
 	        if (event.getClickCount() == 2) {
 	            selectedBook = booksListView.getSelectionModel().getSelectedItem();
@@ -63,13 +49,6 @@ public class SubscriberExtensionController {
 	        }
 	  }
 	 
-	 /**
-     * Handles the action for extending the return date of a selected book.
-     * Validates the selection and checks conditions for extending the return date.
-     *
-     * @param event the action event triggered by clicking the "Extend" button.
-     * @throws IOException if an error occurs during communication with the server.
-     */
 	 public void getExtendBtn (ActionEvent event) throws IOException {
 		 int subID = ChatClient.sub1.getSubscriber_id();
 		 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -95,13 +74,6 @@ public class SubscriberExtensionController {
 		 msg.setText("Great! 🎉 You have your book for 14 more days, Have Fun!");		 
 	 }
 	 
-	 /**
-     * Handles the action for the "Return" button.
-     * Navigates back to the Client Home Page.
-     *
-     * @param event the action event triggered by clicking the "Return" button.
-     * @throws IOException if an error occurs while loading the home page FXML.
-     */
 	 public void getReturnBtn(ActionEvent event) throws IOException {
 		    // Close the current window
 		    ((Node) event.getSource()).getScene().getWindow().hide();
@@ -119,13 +91,6 @@ public class SubscriberExtensionController {
 		    primaryStage.show();
 		}
 	 
-	 /**
-     * Handles the action for the "Exit" button.
-     * Closes the application.
-     *
-     * @param event the action event triggered by clicking the "Exit" button.
-     * @throws IOException if an error occurs during the exit process.
-     */
 	 public void getExitBtn(ActionEvent event) throws IOException {
 	        System.exit(0);
 	    }

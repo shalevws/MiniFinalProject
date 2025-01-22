@@ -83,8 +83,20 @@ public class LibrarianReturnGUI {
 	
 	private ObservableList<String> BooksNames;
 	
+<<<<<<< HEAD
 	public void initialize() {
 		showAllBooks();
+=======
+	public void sendButton(ActionEvent event) {		// method that sends information to the controller to return the book to the library
+		
+		 
+		if (!isChecked) {
+	        alertMessege.setContentText("You must check if the borrow exists before returning the book.");
+	        alertMessege.setAlertType(AlertType.ERROR);
+	        alertMessege.show();
+	        return;
+	    }
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 		
 		
 	}
@@ -126,6 +138,21 @@ public class LibrarianReturnGUI {
 		String BorrowerId=subscriberId.getText();
 		
 		
+<<<<<<< HEAD
+=======
+		// check if the book has already returned by the subscriber
+		ClientGUIConnectionController.chat.returnBook_accept("CHECK_BOOK_RETURNED", BorrowerId, BookName, null, null, null);
+		
+		// if the book already returned then show message 
+		if (ChatClient.bool==true) {
+			//sendMsg.setText("Book has already returned!");
+			showLabelTextForDuration(sendMsg, "Book has already returned!", 3000); // Show text for 3 seconds
+
+			return;
+		}
+		
+		
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 		BookName = ChatClient.bookName;
 		System.out.println("book name is: "+BookName);
 		// get current time in a format of yyyy-MM-dd
@@ -154,6 +181,42 @@ public class LibrarianReturnGUI {
 		try {
 			
 			long daysLate = currentDate.toEpochDay()- deadlineDate.toEpochDay();
+<<<<<<< HEAD
+=======
+		
+		
+		if (daysLate<=0) {
+			
+			ClientGUIConnectionController.chat.returnBook_accept("INSERT", BorrowerId, BookName,false,false,difference);
+			
+			
+		}
+		else if(daysLate<7) {
+			
+			ClientGUIConnectionController.chat.returnBook_accept("INSERT", BorrowerId, BookName,true,false,difference);
+
+			
+		}
+		else if(daysLate>=7) {
+			ClientGUIConnectionController.chat.returnBook_accept("INSERT", BorrowerId, BookName,true,true,difference);
+
+			
+		}
+		if (ChatClient.bool==false) {
+			alertMessege.setContentText("Error need to check if exist borrow first");	
+		 	alertMessege.setAlertType(AlertType.ERROR);
+		 	alertMessege.show();
+			return;
+			
+		}
+		
+		if(ChatClient.isFrozen) {	
+			showLabelTextForDuration(sendMsg, "Return operation successfully finished!", 3000); // Show text for 3 seconds
+			alertMessege.setContentText("The subscriber’s status card has been frozen");	
+		 	alertMessege.setAlertType(AlertType.INFORMATION);
+		 	alertMessege.show();
+		}
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 		
 		
 			if (daysLate<=0) {
@@ -202,7 +265,11 @@ public class LibrarianReturnGUI {
 		timeline.setCycleCount(1);
 		timeline.play();
 	}
+<<<<<<< HEAD
 	public String checkBttn() {		// method that get information from the data the controller to return the book to the library
+=======
+	public void checkBttn(ActionEvent event) {		// method that get information from the data the controller to return the book to the library
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 		
 		
 		String actionDate = null;
@@ -307,6 +374,7 @@ public class LibrarianReturnGUI {
     	 BooksNames = FXCollections.observableArrayList(borrowersBorrowedBooks);
  		ShowBorrowedBooks.setItems(BooksNames);
     	 
+<<<<<<< HEAD
 	} 
 
 	
@@ -324,6 +392,56 @@ public class LibrarianReturnGUI {
     		return;
 		}
 		
+=======
+    	 
+		ClientGUIConnectionController.chat.accept("select", getSubscribersId.getText(), "", "");
+        Subscriber1 sub = ChatClient.s1;
+        history.append("Subscriber's ID:  " + String.valueOf(sub.getSubscriber_id())+"\n");
+        history.append("Subscriber's Name:  " + sub.getSubscriber_name()+"\n");
+        history.append("Subscriber's Phone:  " + sub.getSubscriber_phone_number()+"\n");
+        history.append("Subscriber's Email:  " + sub.getSubscriber_email()+"\n");
+        history.append("Subscriber's Status:  " + sub.getSub_status()+"\n\n");
+        
+		if (getSubscribersId.getText().trim().isEmpty()) {
+		        alertMessege.setContentText("You must provide the Subscriber's ID.");
+		        alertMessege.setAlertType(AlertType.ERROR);
+		        alertMessege.show(); // Show the error alert
+		        return; // Stop further execution
+		}
+		
+		
+		ClientGUIConnectionController.chat.accept("watch borrow history", getSubscribersId.getText(), "", "");
+	
+		
+		borrowersBorrowHistory = ChatClient.borrowHistory;
+		
+		if(borrowersBorrowHistory.isEmpty()) {	
+			alertMessege.setContentText("There is no borrow history.");	
+		 	alertMessege.setAlertType(AlertType.INFORMATION);
+		 	alertMessege.show();
+		}
+		
+		for(String line: borrowersBorrowHistory) {
+			history.append("***********************************"
+					+ "*********************************************"
+					+ "*********************************************"
+					+ "**********\n\n");
+			history.append(line);
+			history.append("\n\n");
+		}
+		history.append("***********************************"
+				+ "*********************************************"
+				+ "*********************************************"
+				+ "**********");
+		ShowHistory.setText(history.toString());
+//		checkButton.setVisible(isChecked);
+	}
+	
+	//when in the barcode the book was scanned we enable the button
+	
+	public void barcodeButton (ActionEvent event) {
+		int bookId = Integer.parseInt(bookID.getText());
+>>>>>>> parent of 90e15ff (Merge branch 'main' into barile)
 		ClientGUIConnectionController.chat.acceptBarCode(bookId);
 		if(ChatClient.bookName.equals("")) {
 			

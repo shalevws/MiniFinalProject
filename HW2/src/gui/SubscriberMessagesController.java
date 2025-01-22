@@ -14,10 +14,6 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-/**
- * Controller class for the Subscriber Messages view.
- * This class manages the display of subscriber messages and provides options to return to the home page or exit the application.
- */
 public class SubscriberMessagesController {
 	
 	@FXML
@@ -28,10 +24,6 @@ public class SubscriberMessagesController {
 	 
 	String subName = ChatClient.sub1.getSubscriber_name();
 	
-	/**
-     * Initializes the controller by setting the subscriber's name in the message dialog
-     * and populating the ListView with their messages from the server.
-     */
 	 @FXML
 	  public void initialize() {
 		msg.setContentText(subName + "'s Messages:");
@@ -41,13 +33,6 @@ public class SubscriberMessagesController {
         messages.getItems().addAll(subMessages);
 	}
 	 
-	 /**
-     * Handles the action for the "Return" button.
-     * Navigates back to the Client Home Page.
-     *
-     * @param event the action event triggered by clicking the "Return" button.
-     * @throws IOException if an error occurs while loading the home page FXML.
-     */
 	 public void getReturnBtn(ActionEvent event) throws IOException {
 		    // Close the current window
 		    ((Node) event.getSource()).getScene().getWindow().hide();
@@ -65,13 +50,6 @@ public class SubscriberMessagesController {
 		    primaryStage.show();
 		}
 	 
-	 /**
-     * Handles the action for the "Exit" button.
-     * Closes the application.
-     *
-     * @param event the action event triggered by clicking the "Exit" button.
-     * @throws IOException if an error occurs during the exit process.
-     */
 	 public void getExitBtn(ActionEvent event) throws IOException {
 	        System.exit(0);
 	    }

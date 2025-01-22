@@ -20,10 +20,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import server.mysqlConnection;
 
-/**
- * Controller class for the Add Subscriber GUI.
- * This class handles user interactions and business logic for adding new subscribers.
- */
 public class AddSubscriberGUIController {
 	
 	@FXML
@@ -51,12 +47,7 @@ public class AddSubscriberGUIController {
 	@FXML
 	private Label afterUpdate = null;
 	
-	/**
-	 * Initializes and displays the Add Subscriber GUI.
-	 * 
-	 * @param primaryStage The primary stage for this GUI.
-	 * @throws Exception If an error occurs while loading the FXML file.
-	 */			
+				
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/gui/AddSubscriberGUIController.fxml"));
         Scene scene = new Scene(root);
@@ -65,12 +56,7 @@ public class AddSubscriberGUIController {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-	/**
-	 * Handles the Save button click event.
-	 * Validates input fields and adds a new subscriber if all fields are valid.
-	 * 
-	 * @param event The ActionEvent triggered by the Save button.
-	 */
+    
     public void saveBtn(ActionEvent event) {
     	 afterUpdate.setText("");
         StringBuilder missingFields = new StringBuilder();
@@ -99,20 +85,17 @@ public class AddSubscriberGUIController {
             alert.showAndWait();
             return;
         } else {
-        	// Validate email format
         	if(email.getText().indexOf("@") == -1) {
                 alert.setTitle("Error");
                 alert.setContentText("Please enter a valid email");
                 alert.showAndWait();  
                 return;
         	}
-        	// Validate phone number
-        	String cleanedText = phoneNumber.getText().replaceAll("[^\\d]", ""); 
-        	if (cleanedText.length() != 10 || !cleanedText.matches("\\d+")) {
-        	    alert.setTitle("Error");
-        	    alert.setContentText("Please enter a valid phone number");
-        	    alert.showAndWait();
-        	    return;
+        	if(phoneNumber.getText().length()!=10) {
+                alert.setTitle("Error");
+                alert.setContentText("Please enter a valid phone number");
+                alert.showAndWait();
+                return;
         	}
             // If all fields are filled, proceed with the action
             String status = "active";
@@ -121,24 +104,11 @@ public class AddSubscriberGUIController {
             afterUpdate.setText("Added");
         }
     }
-	/**
-	 * Handles the Exit button click event.
-	 * Exits the application.
-	 * 
-	 * @param event The ActionEvent triggered by the Exit button.
-	 * @throws IOException If an I/O error occurs.
-	 */
+
 	public void getExitBtn(ActionEvent event) throws IOException {
 		System.out.println("Exit client");
 		System.exit(0);
 	}
-	/**
-	 * Handles the Return button click event.
-	 * Returns to the Librarian Home Page.
-	 * 
-	 * @param event The ActionEvent triggered by the Return button.
-	 * @throws IOException If an error occurs while loading the FXML file.
-	 */
 	public void getReturnBtn(ActionEvent event) throws IOException{
 		FXMLLoader loader = new FXMLLoader();
 		((Node) event.getSource()).getScene().getWindow().hide(); // hiding primary window
